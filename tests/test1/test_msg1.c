@@ -32,7 +32,7 @@ int main() {
     fflush(stdout);
 
     // 5. Очистка
-    vx_string_set_deinit(&str);
+    vx_string_set_uninit(&str);
     
     return 0;
 }
