@@ -97,6 +97,25 @@ int vx_array_push_back(vx_array *array, const void *item)
     return 0;
 }
 
+void vx_array_deinit(vx_array *array) {
+    if (array == NULL) {
+        return;
+    }
+
+    /* 1. Free the raw memory buffer */
+    if (array->data != NULL) {
+        free(array->data);
+        array->data = NULL; /* Critical for safety */
+    }
+
+    /* 2. Reset metadata to prevent accidental access */
+    array->size = 0;
+    array->alloc_size = 0;
+    array->capacity_bytes = 0;
+    
+    /* We keep item_size as it was defined during init, 
+       allowing the array to be reused if needed. */
+}
 
 /**
  * Frees the internal memory of the array and resets its fields.
