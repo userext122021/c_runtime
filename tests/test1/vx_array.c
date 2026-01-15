@@ -97,8 +97,6 @@ int vx_array_push_back(vx_array *array, const void *item)
     return 0;
 }
 
-#include <stdlib.h>
-#include "vx_std.h"
 
 /**
  * Frees the internal memory of the array and resets its fields.
