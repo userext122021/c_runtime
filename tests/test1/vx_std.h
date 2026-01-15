@@ -26,7 +26,7 @@ typedef struct vx_array_s
 /* Initializes the array structure with item size and default values */
 int vx_array_init(vx_array *array, size_t item_size);
 
-void vx_array_deinit(vx_array *array);
+void vx_array_uninit(vx_array *array);
 
 /* Frees internal buffer and resets metadata */
 void vx_array_free(vx_array *array);
@@ -71,7 +71,7 @@ int vx_string_append_c(vx_string *str, const char *c_str);
 const char* vx_string_get_c(const vx_string *str);
 
 /* Frees string memory */
-void vx_string_deinit(vx_string *str);
+void vx_string_uninit(vx_string *str);
 
 void vx_string_free(vx_string *str); 
 
@@ -88,7 +88,7 @@ typedef struct vx_string_set_s {
  * @return 0 on success, -1 on failure.
  */
 int vx_string_set_init(vx_string_set *set);
-void vx_string_set_deinit(vx_string_set *set);
+void vx_string_set_uninit(vx_string_set *set);
 /**
  * Frees all strings in the set and the internal array buffer.
  * @param set Pointer to the string set.
