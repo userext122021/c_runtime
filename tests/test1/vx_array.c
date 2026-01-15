@@ -55,6 +55,11 @@ int vx_array_reserve(vx_array *array, size_t new_alloc)
     return 0;
 }
 
+int vx_array_resize(vx_array *array, size_t new_size) {
+    if (vx_array_reserve(array, new_size) != 0) return -1;
+    array->size = new_size;
+    return 0;
+}
 
 
 /**
