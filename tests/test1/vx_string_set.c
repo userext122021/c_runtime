@@ -66,7 +66,7 @@ vx_string* vx_string_set_get(const vx_string_set *set, size_t index) {
     return *(vx_string**)vx_array_at(&set->strings, index);
 }
 
-size_t vx_string_set_size(const vx_string_set *set) {
+size_t vx_string_set_get_size(const vx_string_set *set) {
     if (set == NULL) {
         return 0;
     }
