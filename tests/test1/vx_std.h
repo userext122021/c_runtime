@@ -53,6 +53,9 @@ typedef struct vx_string_s
     vx_array buffer; /* Internal buffer to store characters */
 } vx_string;
 
+/* Allocates a new vx_string on the heap and initializes it */
+vx_string* vx_string_new(const char *initial_text);
+
 /* Initializes an empty string */
 int vx_string_init(vx_string *str);
 
