@@ -47,5 +47,25 @@ int vx_array_set(vx_array *array, size_t index, const void *item);
 /* Resets size to 0 without freeing memory */
 void vx_array_clear(vx_array *array);
 
+//VX STRINGS
+typedef struct vx_string_s
+{
+    vx_array buffer; /* Internal buffer to store characters */
+} vx_string;
+
+/* Initializes an empty string */
+int vx_string_init(vx_string *str);
+
+/* Initializes a string from a C-style string (char*) */
+int vx_string_set_c(vx_string *str, const char *c_str);
+
+/* Appends a C-style string to the end */
+int vx_string_append_c(vx_string *str, const char *c_str);
+
+/* Returns a pointer to a null-terminated C-string */
+const char* vx_string_get_c(const vx_string *str);
+
+/* Frees string memory */
+void vx_string_free(vx_string *str);
 
 #endif /* VX_STD_H */
