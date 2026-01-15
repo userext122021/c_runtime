@@ -71,4 +71,51 @@ const char* vx_string_get_c(const vx_string *str);
 /* Frees string memory */
 void vx_string_free(vx_string *str);
 
+
+/* --- String Set (Unique Collection) --- */
+typedef struct vx_string_set_s {
+    vx_array strings; /* Array of vx_string* pointers */
+} vx_string_set;
+
+/* Lifecycle Management */
+
+/**
+ * Initializes a new string set.
+ * @param set Pointer to the string set structure.
+ * @return 0 on success, -1 on failure.
+ */
+int vx_string_set_init(vx_string_set *set);
+
+/**
+ * Frees all strings in the set and the internal array buffer.
+ * @param set Pointer to the string set.
+ */
+void vx_string_set_free(vx_string_set *set);
+
+/* Operations */
+
+/**
+ * Adds a C-string to the set if it's not already present.
+ * @param set Pointer to the string set.
+ * @param c_str Null-terminated C-string to add.
+ * @return The index of the string (new or existing), or -1 on error.
+ */
+int vx_string_set_add(vx_string_set *set, const char *c_str);
+
+/**
+ * Finds the index of a C-string in the set.
+ * @param set Pointer to the string set.
+ * @param c_str Null-terminated C-string to find.
+ * @return The index of the string, or -1 if not found.
+ */
+int vx_string_set_find(const vx_string_set *set, const char *c_str);
+
+/**
+ * Retrieves the vx_string object at a specific index.
+ * @param set Pointer to the string set.
+ * @param index The index to access.
+ * @return Pointer to vx_string, or NULL if index is out of bounds.
+ */
+vx_string* vx_string_set_get(const vx_string_set *set, size_t index);
+
 #endif /* VX_STD_H */
