@@ -47,7 +47,7 @@ int vx_string_set_add(vx_string_set *set, const char *c_str) {
 
     /* 3. Add the pointer to the array */
     if (vx_array_push_back(&set->strings, &new_s) != 0) {
-        vx_string_destroy(new_s);
+        vx_string_free(new_s);
         return -1;
     }
 
