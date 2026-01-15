@@ -1,6 +1,38 @@
 #include <string.h>
 #include "vx_std.h"
 
+
+/**
+ * Creates a new vx_string on the heap.
+ * @param initial_text Optional initial text, can be NULL for empty string.
+ * @return Pointer to the new string, or NULL if allocation fails.
+ */
+vx_string* vx_string_new(const char *initial_text) {
+    /* 1. Allocate the structure itself */
+    vx_string *str = (vx_string*)malloc(sizeof(vx_string));
+    if (str == NULL) {
+        return NULL;
+    }
+
+    /* 2. Initialize the internal buffer */
+    if (vx_string_init(str) != 0) {
+        free(str);
+        return NULL;
+    }
+
+    /* 3. If initial text is provided, set it */
+    if (initial_text != NULL) {
+        if (vx_string_set_c(str, initial_text) != 0) {
+            vx_string_free(str);
+            free(str);
+            return NULL;
+        }
+    }
+
+    return str;
+}
+
+
 int vx_string_init(vx_string *str) {
     if (!str) return -1;
     /* Initialize buffer for bytes (characters) */
