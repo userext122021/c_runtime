@@ -1,15 +1,24 @@
 #ifndef VX_STD_H
 #define VX_STD_H
 
-typedef uint8_t vx_byte;
+#include <stdint.h> // Required for uint8_t
+#include <stddef.h> // Required for size_t
+
+/* Basic types for the VX ecosystem */
+typedef uint8_t      vx_byte;
 typedef unsigned int vx_id;
 
-typedef struct
+/**
+ * @struct vx_array_s
+ * @brief A dynamic array implementation for the Vertex Shell environment.
+ */
+typedef struct vx_array_s
 {
-size_t size;
-size_t item_size;
-size_t alloc_size; //amount of items to alloc 
-vx_byte *data;
-}vx_array;
+    size_t size;           /* Current number of elements in the array */
+    size_t item_size;      /* Size of a single element in bytes */
+    size_t alloc_size;     /* Maximum number of elements before reallocation */
+    size_t capacity_bytes; /* Total allocated memory in bytes (alloc_size * item_size) */
+    vx_byte *data;         /* Pointer to the raw data buffer */
+} vx_array;
 
-#endif
+#endif /* VX_STD_H */
