@@ -69,8 +69,9 @@ int vx_string_append_c(vx_string *str, const char *c_str);
 const char* vx_string_get_c(const vx_string *str);
 
 /* Frees string memory */
-void vx_string_free(vx_string *str);
+void vx_string_deinit(vx_string *str);
 
+void vx_string_free(vx_string *str); 
 
 /* --- String Set (Unique Collection) --- */
 typedef struct vx_string_set_s {
