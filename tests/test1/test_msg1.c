@@ -18,7 +18,7 @@ int main() {
    
 
     vx_string_set_uninit(&u_strings);
-    vx_array_deinit(&handlers);
+    vx_array_uninit(&handlers);
 
     return 0;
 }
