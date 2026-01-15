@@ -1,28 +1,24 @@
 #include <stdio.h>
 #include <assert.h>
-#include <string.h>
 #include "vx_std.h"
 
+// 1. Define a type for your function pointer for readability
+typedef void (*vx_msg_f)(int);
+
+// 2. Some dummy functions to test
+void msg1(int val) { printf("msg1: %d\n", val); }
+void msg2(int val) { printf("msg1: %d\n", val); }
+vx_array msg_functions;
+vx_string_set u_strings;    
 int main() {
-    printf("Vertex Shell Sandbox: Custom Test...\n\n");
+    vx_array_init(&handlers, sizeof(vx_msg_f));
+    vx_string_set_init(&u_strings);
+ 
+ 
+   
 
-    /* 1. Initialization */
-    vx_string_set set;
-    vx_string_set_init(&set);
+    vx_string_set_uninit(&u_strings);
+    vx_array_deinit(&handlers);
 
-    vx_array array;
-    vx_array_init(&array, sizeof(int)); // Change sizeof() to your type
-
-    /* --- START YOUR LOGIC HERE --- */
-
-
-
-    /* --- END YOUR LOGIC HERE --- */
-
-    /* 2. Cleanup */
-    vx_array_deinit(&array);
-    vx_string_set_deinit(&set);
-
-    printf("\nSandbox execution finished.\n");
     return 0;
 }
