@@ -119,4 +119,34 @@ int vx_string_set_find(const vx_string_set *set, const char *c_str);
  */
 vx_string* vx_string_set_get(const vx_string_set *set, size_t index);
 
+
+/**
+ * @struct vx_dict_entry_s
+ * @brief Internal structure for key-value pairs
+ */
+typedef struct vx_dict_entry_s {
+    vx_string *key;
+    void      *value;
+    struct vx_dict_entry_s *next; /* For handling collisions (Chaining) */
+} vx_dict_entry;
+
+/**
+ * @struct vx_dict_s
+ * @brief Hash-map based dictionary for Vertex Shell
+ */
+typedef struct vx_dict_s {
+    vx_dict_entry **buckets; /* Array of entry pointers */
+    size_t capacity;         /* Number of buckets */
+    size_t size;             /* Number of items stored */
+} vx_dict;
+
+/* Lifecycle */
+int      vx_dict_init(vx_dict *dict, size_t initial_capacity);
+void     vx_dict_deinit(vx_dict *dict);
+
+/* Operations */
+int      vx_dict_set(vx_dict *dict, const char *key, void *value);
+void*    vx_dict_get(const vx_dict *dict, const char *key);
+int      vx_dict_remove(vx_dict *dict, const char *key);
+
 #endif /* VX_STD_H */
