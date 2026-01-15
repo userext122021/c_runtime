@@ -26,6 +26,8 @@ typedef struct vx_array_s
 /* Initializes the array structure with item size and default values */
 int vx_array_init(vx_array *array, size_t item_size);
 
+void vx_array_deinit(vx_array *array);
+
 /* Frees internal buffer and resets metadata */
 void vx_array_free(vx_array *array);
 
