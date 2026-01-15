@@ -120,15 +120,6 @@ int vx_string_set_find(const vx_string_set *set, const char *c_str);
 vx_string* vx_string_set_get(const vx_string_set *set, size_t index);
 
 
-/**
- * @struct vx_dict_entry_s
- * @brief Internal structure for key-value pairs
- */
-typedef struct vx_dict_entry_s {
-    vx_string *key;
-    void      *value;
-    struct vx_dict_entry_s *next; /* For handling collisions (Chaining) */
-} vx_dict_entry;
 
 
 
