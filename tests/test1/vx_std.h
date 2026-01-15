@@ -34,6 +34,8 @@ void vx_array_free(vx_array *array);
 /* Ensures the array has enough memory for at least new_alloc elements */
 int vx_array_reserve(vx_array *array, size_t new_alloc);
 
+int vx_array_resize(vx_array *array, size_t new_size);
+
 /* Adds an element to the end, growing the array if necessary */
 int vx_array_push_back(vx_array *array, const void *item);
 
