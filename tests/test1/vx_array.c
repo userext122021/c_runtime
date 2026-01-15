@@ -97,7 +97,7 @@ int vx_array_push_back(vx_array *array, const void *item)
     return 0;
 }
 
-void vx_array_deinit(vx_array *array) {
+void vx_array_uninit(vx_array *array) {
     if (array == NULL) {
         return;
     }
