@@ -66,6 +66,28 @@ vx_string* vx_string_set_get(const vx_string_set *set, size_t index) {
     return *(vx_string**)vx_array_at(&set->strings, index);
 }
 
+void vx_string_set_deinit(vx_string_set *set) {
+    if (set == NULL) {
+        return;
+    }
+
+    /* 1. Iterate through the array of pointers */
+    for (size_t i = 0; i < set->strings.size; i++) {
+        /* Retrieve the vx_string pointer stored in the array */
+        vx_string *s = *(vx_string**)vx_array_at(&set->strings, i);
+        
+        /* 2. Destroy each string object. 
+           We use vx_string_free (as we agreed: it calls deinit + free structure) */
+        if (s != NULL) {
+            vx_string_free(s); 
+        }
+    }
+
+    /* 3. Deinitialize the internal array of pointers */
+    vx_array_deinit(&set->strings);
+}
+
+
 /**
  * Deep clean: free every vx_string object, then the pointer array.
  */
