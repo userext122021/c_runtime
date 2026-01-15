@@ -26,13 +26,35 @@ int main() {
     int id2 = vx_string_set_find(&str, "msg2");
     size_t sz = vx_string_set_get_size(&str);
 
+    vx_array foo;
+    vx_array_init(&foo,sizeof(vx_msg_f));
+    vx_array_resize(&foo,sz);
+
+      // 1. Создаем переменные-указатели (ОБЯЗАТЕЛЬНО)
+    vx_msg_f f1 = msg1;
+    vx_msg_f f2 = msg2;
+    
+    vx_array_set(&foo,id1,&f1);
+    vx_array_set(&foo,id2,&f2);
+    
+    
+    
     printf("msg1_idx: %d | msg2_idx: %d | size: %zu\n", id1, id2, sz);
 
+
+    vx_msg_f *call_msg1 = (vx_msg_f*)vx_array_at(&foo, id1);
+    vx_msg_f *call_msg2 = (vx_msg_f*)vx_array_at(&foo, id2);
+
+    (*call_msg1)(123);
+    (*call_msg2)(246);
+    
+
+    
     // 4. Гарантируем вывод, если система тормозит (Force flush)
     fflush(stdout);
 
     // 5. Очистка
     vx_string_set_uninit(&str);
-    
+    vx_array_uninit(&foo);
     return 0;
 }
