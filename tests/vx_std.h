@@ -14,11 +14,12 @@ typedef unsigned int vx_id;
  */
 typedef struct vx_array_s
 {
-    size_t size;           /* Current number of elements in the array */
-    size_t item_size;      /* Size of a single element in bytes */
-    size_t alloc_size;     /* Maximum number of elements before reallocation */
-    size_t capacity_bytes; /* Total allocated memory in bytes (alloc_size * item_size) */
-    vx_byte *data;         /* Pointer to the raw data buffer */
+    size_t size;
+    size_t item_size;
+    size_t alloc_size;     /* Current capacity in elements */
+    size_t capacity_bytes;
+    size_t min_alloc;      /* Minimum number of elements to allocate */
+    vx_byte *data;
 } vx_array;
 
 #endif /* VX_STD_H */
