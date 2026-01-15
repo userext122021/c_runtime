@@ -1,3 +1,5 @@
+all:build
+	echo Building all... 
 pull:
 	git pull
 clean:
