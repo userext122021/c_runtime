@@ -70,7 +70,7 @@ int vx_string_append_c(vx_string *str, const char *c_str);
 /* Returns a pointer to a null-terminated C-string */
 const char* vx_string_get_c(const vx_string *str);
 
-size_t vx_string_set_size(const vx_string_set *set);
+
 
 /* Frees string memory */
 void vx_string_uninit(vx_string *str);
@@ -123,7 +123,7 @@ int vx_string_set_find(const vx_string_set *set, const char *c_str);
  */
 vx_string* vx_string_set_get(const vx_string_set *set, size_t index);
 
-
+size_t vx_string_set_get_size(const vx_string_set *set);
 
 
 
