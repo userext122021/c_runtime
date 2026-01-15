@@ -46,7 +46,7 @@ int main() {
 
     // 6. Test Deep Cleanup
     // We use valgrind later to ensure all vx_string objects are freed
-    vx_string_set_deinit(&set);
+    vx_string_set_uninit(&set);
     assert(set.strings.data == NULL);
     printf("[PASS] Deep deinitialization\n");
 
