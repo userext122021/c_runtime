@@ -91,3 +91,4 @@ void vx_string_free(vx_string *str) {
         vx_string_deinit(str); /* Step 1: Clean internal buffers */
         free(str);             /* Step 2: Free the structure memory */
     }
+}
