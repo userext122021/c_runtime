@@ -86,7 +86,7 @@ typedef struct vx_string_set_s {
  * @return 0 on success, -1 on failure.
  */
 int vx_string_set_init(vx_string_set *set);
-
+void vx_string_set_deinit(vx_string_set *set);
 /**
  * Frees all strings in the set and the internal array buffer.
  * @param set Pointer to the string set.
