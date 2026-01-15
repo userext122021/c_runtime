@@ -84,7 +84,7 @@ void vx_string_set_uninit(vx_string_set *set) {
     }
 
     /* 3. Deinitialize the internal array of pointers */
-    vx_array_deinit(&set->strings);
+    vx_array_uninit(&set->strings);
 }
 
 
