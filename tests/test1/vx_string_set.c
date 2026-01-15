@@ -76,7 +76,7 @@ void vx_string_set_free(vx_string_set *set) {
     for (size_t i = 0; i < set->strings.size; i++) {
         vx_string *s = *(vx_string**)vx_array_at(&set->strings, i);
         if (s != NULL) {
-            vx_string_destroy(s);
+            vx_string_free(s);
         }
     }
 
